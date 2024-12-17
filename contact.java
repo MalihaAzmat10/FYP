@@ -1,6 +1,7 @@
-package com.example.project;
+package com.example.fyp;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
