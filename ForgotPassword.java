@@ -1,4 +1,5 @@
-package com.example.project;
+package com.example.fyp;
+
 
 import android.os.Bundle;
 
