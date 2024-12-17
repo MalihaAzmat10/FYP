@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.fyp;
 
 import android.os.Bundle;
 import android.text.Html;
@@ -25,10 +25,10 @@ public class about extends AppCompatActivity {
 
         // Bullet points content using HTML formatting
         String bulletPoints = "<ul>" +
-                "<li>Point one: Customer Segmentation. </li>" +
-                "<li>Point two: RFM Analysis.</li>" +
-                "<li>Point three: RFM Analysis.</li>" +
-                "<li>Point four: Feedback Analysis.</li>" +
+                "<li> Customer Segmentation. </li>" +
+                "<li> RFM Analysis.</li>" +
+                "<li> RFM Analysis.</li>" +
+                "<li> Feedback Analysis.</li>" +
                 "</ul>";
 
         // Set the formatted text to the TextView
