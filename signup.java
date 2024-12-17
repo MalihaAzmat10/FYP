@@ -1,21 +1,22 @@
-package com.example.project;
+package com.example.fyp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class signup extends AppCompatActivity {
 
     private EditText username, email, password;
-    private Button signUpButton, googleSignUpButton;
+    private Button signUpButton,LogInLink;
+
+    // Database helper
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,38 +28,50 @@ public class signup extends AppCompatActivity {
         username = findViewById(R.id.usernameInput);
         email = findViewById(R.id.emailInput);
         password = findViewById(R.id.passwordInput);
-        Button signupButton = findViewById(R.id.signUpButton);
-        Button googleSignUpButton = findViewById(R.id.googleSignUpButton);
+        signUpButton = findViewById(R.id.signUpButton);
 
-        // Sign up button action
-        signupButton.setOnClickListener(new View.OnClickListener() {
+
+        TextView LogInLink = findViewById(R.id.LogInLink);
+
+        LogInLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Simple validation (Add more robust validation as needed)
-                if (username.getText().toString().isEmpty() ||
-                        email.getText().toString().isEmpty() ||
-                        password.getText().toString().isEmpty()) {
+                Intent intent = new Intent(signup.this, login.class);
+                startActivity(intent);
+            }
+        });
+
+//         Initialize database helper
+        dbHelper = new DatabaseHelper(this);
+
+//         Sign up button action
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String usernameText = username.getText().toString().trim();
+                String emailText = email.getText().toString().trim();
+                String passwordText = password.getText().toString().trim();
+
+                // Basic validation
+                if (usernameText.isEmpty() || emailText.isEmpty() || passwordText.isEmpty()) {
                     Toast.makeText(signup.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                } else if (dbHelper.checkEmail(emailText)) {
+                    Toast.makeText(signup.this, "Email already exists", Toast.LENGTH_SHORT).show();
                 } else {
-                    // You can handle sign-up logic here
-                    Toast.makeText(signup.this, "Signed up successfully!", Toast.LENGTH_SHORT).show();
+                    boolean insertSuccess = dbHelper.addUser(usernameText, emailText, passwordText);
+                    if (insertSuccess) {
+                        Toast.makeText(signup.this, "Signed up successfully!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(signup.this, login.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(signup.this, "Failed to sign up", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
 
-        // Google sign up button action
-        googleSignUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle Google sign-up logic here
-                Toast.makeText(signup.this, "Sign up with Google", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
 }
+
