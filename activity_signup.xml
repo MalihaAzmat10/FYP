@@ -7,17 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".signup"
     android:background="@drawable/background">
-    <!--dropdown-->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/hum"
-        android:contentDescription="@string/hum"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <!-- Title -->
     <TextView
@@ -39,7 +29,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Username"
-        android:textColorHint="#000000"
         android:backgroundTint="#FFFFFF"
         android:layout_marginTop="60dp"
         android:textColor="#000000"
@@ -56,7 +45,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:textColorHint="#000000"
         android:backgroundTint="#FFFFFF"
         android:layout_marginTop="10dp"
         android:textColor="#000000"
@@ -74,7 +62,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:textColorHint="#000000"
         android:backgroundTint="#FFFFFF"
         android:layout_marginTop="10dp"
         android:textColor="#000000"
@@ -93,7 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Sign up"
         android:textSize="19sp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="49dp"
         android:backgroundTint="#005288"
         android:textColor="#ffffff"
         android:padding="7dp"
@@ -101,23 +88,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="32dp" />
-    <!-- Sign up with Google Button -->
+<!--    &lt;!&ndash; Sign up with Google Button &ndash;&gt;-->
 
-    <!-- Login Link -->
+<!--    &lt;!&ndash; Login Link &ndash;&gt;-->
 
-    <Button
-        android:id="@+id/googleSignUpButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Sign up with Google"
+<!--    <Button-->
+<!--        android:id="@+id/googleSignUpButton"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="32dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:backgroundTint="#FFFFFF"-->
+<!--        android:text="Sign up with Google"-->
 
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signUpButton" />
+<!--        android:textColor="#000000"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/signUpButton" />-->
 
     <TextView
         android:id="@+id/tv_login"
@@ -125,25 +112,25 @@
         android:layout_height="wrap_content"
         android:text="Already have an account? "
         android:textColor="#FFFFFF"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/googleSignUpButton"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/signUpButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="18sp"
         android:layout_marginEnd="65dp"/>
 
     <TextView
-        android:id="@+id/clickableText"
+        android:id="@+id/LogInLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log in"
-        android:textColor="@android:color/holo_blue_light"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:layout_marginStart="200dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:padding="7dp"
+        android:textSize="19sp"
+        android:layout_marginStart="180dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/googleSignUpButton"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signUpButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
